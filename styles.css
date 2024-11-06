@@ -1,0 +1,707 @@
+/* ----------------------------- general css -----------------------------*/
+
+/* Apply box-sizing to all elements to include padding and border in element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Custom font face for Hiranino Mincho Pro w6 font */
+@font-face {
+  font-family: "hiragino";
+  src: url(font/hiragino-mincho-pro-w6.otf);
+}
+
+/* Base styling for the body */
+body {
+  font-family: "hiragino";
+  height: 100%;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 7% 0 5% 3%;
+  text-transform: uppercase;
+}
+
+.heading-1-white {
+  color: #fff;
+}
+
+/* General cursor pointer for clickable elements */
+.cursor-pointer-general {
+  cursor: pointer;
+}
+
+/* Custom cursor for symbol section in section 4 */
+.cursor-pointer-for-symbol-section4 {
+  cursor: url('svg/cursor-for-seven-virtues.svg'), auto; /* SVG made in Figma */
+}
+
+/* draft setting from Fullpage.js was justify-content: center, it cased the different position for heading so I chagned to this and set each conctent section manually */ 
+.fp-table {
+  justify-content: flex-start;
+}
+
+@media only screen and (max-width: 1061px) { 
+  h1 {
+    margin-top: 10%;
+  }
+}
+
+@media only screen and (max-width: 794px) { 
+  h1 {
+    margin: 15% 0 5% 5%;
+  }
+}
+
+@media only screen and (max-width: 633px) { 
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 537px) { 
+  h1 {
+    font-size: 2rem;
+    margin-top: 20%;
+  }
+}
+
+@media only screen and (max-width: 414px) { 
+  h1 {
+    font-size: 1.5rem;
+    margin: 25% 0 5% 10%;
+  }
+}
+
+/* -----------------------Nab bar (Navigstion bullets from fullpage.js) setting ---------------------------- */
+
+/* Default tooltip style */
+#fp-nav ul li .fp-tooltip {
+  color: black; /* Default color */
+  letter-spacing: 0.11rem;
+  text-transform: uppercase;
+  font-family: "hiragino";
+}
+
+/* Style for tooltips for bullet nav with white text for dark bg */
+.tooltip-white {
+  color: white !important;
+}
+
+/* Style for tooltips  for bullet nav with black text for light bg */
+.tooltip-black {
+  color: black !important;
+}
+
+/* -----------------------Logo setting ---------------------------- */
+
+/* Fixed position for logo in the top left corner */
+.logo {
+  position: fixed;
+  z-index: 1000;
+  left: 2.5rem;
+  top: 2.5rem;
+}
+
+.logo-black { /* white logo apper for dark bg and black logo apper for light bg*/
+  display: none; /* Initially hidden for start becuase home page use white logo */
+}
+
+/* -----------------------Setting for Sound music icon ---------------------------- */
+
+#sound-btn { 
+  font-size: 2.3rem; /* Setting font size for the icon */
+  position: fixed; /* Fixing the icon in place, so it stays in the same position on the screen */
+  margin-top: 90vh; /* Placing the icon near the bottom of the screen (90% of the viewport height) */
+  left: 95vw; /* Positioning the icon towards the right side of the screen (95% of the viewport width) */
+  z-index: 1000; /* Ensuring the icon appears on top of other elements */
+}
+
+/* Styles bellow for icon button with color transitions */
+/* NOTE: when I varidate css file with W3C, only these 3 parts showing an error, but original code come from shoelace, and it is working on my website, so I'm not sure why it shows error, is it becuase W3C validator is not recognising the part for some reason?. Rink: https://shoelace.style/components/icon-button#colors */
+.icon-button-color sl-icon-button::part(base) {
+  color: #643333; /* Applying a dark red color to the icon by default */
+}
+
+.icon-button-color sl-icon-button::part(base):hover,
+.icon-button-color sl-icon-button::part(base):focus {
+  color: #D72323; /* Changing the color to bright red when the icon is hovered or focused */
+}
+
+.icon-button-color sl-icon-button::part(base):active {
+  color: #D72323; /* Keeping the same bright red color when the button is actively clicked */
+}
+
+@media only screen and (max-width: 906px) { 
+  #sound-btn {
+    left: 93vw;
+  }
+}
+
+@media only screen and (max-width: 644px) { 
+  #sound-btn {
+    left: 91vw;
+  }
+}
+
+@media only screen and (max-width: 486px) { 
+  #sound-btn {
+    left: 89vw;
+  }
+}
+
+@media only screen and (max-width: 413px) { 
+  #sound-btn {
+    left: 87vw;
+  }
+}
+
+/* ------------------------Setting for fullpage scrolldown interaction from Fullpage.js Link: https://alvarotrigo.com/fullPage/ --------*/
+
+/* Settings for each section and slide */
+.section,
+.slide{
+  position: relative;
+  background-size: cover; /* Ensure background images or videos cover the full area of the section */
+  overflow: hidden; /* Making sure videos won't overflow */
+}
+
+/* Styling for video overlay backgrounds */
+.overlay-video{
+  position: absolute; /* Position the overlay video to cover the entire section */
+  right: 0; /* Align the overlay to the right edge */
+  bottom: 0;  /* Align the overlay to the bottom edge */
+  top:0; /* Align the overlay to the top edge */
+  width: 100%; /* Make the overlay cover the entire width of the section */
+  height: 100%; height: 100%; /* Make the overlay cover the entire height of the section */
+  background-size: 100% 100%; /* make sure background covers the whole element*/ 
+  background-color: black; /* in case the video doesn't fit the whole page*/
+  background-position: center center; /* Center the background video */
+  background-size: cover; /* Scale background to cover the full area */
+  object-fit: cover; /*cover video background */
+  z-index: -100; /* Position the overlay behind all other elements */
+  backface-visibility: hidden;
+}
+
+/* ------------------------Setting for Home Secction --------------------------------------------*/
+
+/* Central alignment for elements in the home section */
+.home-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height to ensure the section takes the whole screen */
+}
+
+/* SVG animation setting - learnt this from youtube: https://youtu.be/cBOW8Nbb2PQ?si=AWdoddxJXM5Mlgth */
+.kanji { 
+  height: 11vw; /* Setting the height to be 11% of the viewport width */
+  stroke-dasharray: 1470; /* Initial stroke length, controls how the stroke is drawn */
+  animation: 3s fillSvg linear; /* Applying the fillSvg animation for 3 seconds */
+  transition: all .4s; /*for hover effect*/
+  justify-items: center;
+}
+
+/* Animation keyframes for SVG stroke fill */
+@keyframes fillSvg {
+  0%{
+    stroke-dashoffset: 1470; /* Initially, the stroke is not visible */
+  }
+  100%{
+    stroke-width: 0; /* Stroke is completely visible at the end of the animation */
+  }
+}
+
+/* adding hover effct for fun interaction */
+.kanji:hover {
+  height: 12vw; /* Slightly increasing the height on hover */
+}
+
+/* Downward arrow styling for scroll prompt with hover effect */
+.arrow {
+  font-size: 2.3rem; /* Slightly increasing the height on hover */
+  position: absolute; /* Positioning the arrow absolutely within the parent container */
+  left: 50%; /* Horizontally centering the arrow */
+  margin-top: 85vh; /* Placing the arrow near the bottom of the viewport (85% down) */
+  transform: translateX(-50%); /* Adjusting for exact center alignment */
+  color: #fff; 
+  transition: all .3s; /* transition for hover effect */
+}
+
+/* adding hover effct so arrow become a bit bigger and red, helps user experience */
+.arrow:hover {
+  font-size: 2.8rem; /* Increasing font size for hover effect */
+  color: #D72323; /* Changing the arrow color to red when user hover */
+}
+
+@media only screen and (max-width: 818px) { 
+  .kanji {
+    height: 19vw;
+  }
+}
+
+/* -----------------------Setting for Section 2: History ---------------------------- */
+
+/* need to set max-width becuase original design from A2 was like full page was max width but realised it is too wide in a actual website*/ 
+.history-layout-container {
+  max-width: 1000px; /* Limiting the width to 1000px for optimal viewing */
+  display: block;
+  margin: 0 auto 5% auto;
+}
+
+/* Grid settings for history section content bellow, the idea is like a InDeign when create magainze design, so what I did is I write down the lines for columns and row on A2's design and write down each to identify the grid area, and adjust white spaces manually */ 
+.grid-setting {
+  grid-column-gap: 16px; /* Gap between columns */
+  grid-row-gap: 16px; /* Gap between rows */
+  grid-template-rows: auto auto auto auto auto auto auto auto; /* Defining 8 rows */
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; /* 8 equal columns */
+  grid-auto-columns: 1fr; /* Ensuring automatic column size */
+  display: grid; /* Using CSS Grid Layout */
+}
+
+.paragraph-japanese {
+  font-size: 32px;
+  line-height: 1.5em;
+  margin: 0;
+}
+
+/* Flexible space between elements*/ 
+.all-layout-flexspace {
+  flex-direction: row;
+  align-items: flex-start;
+  display: flex;
+}
+
+.japanese-vertical-writing-bushido {
+  grid-area: span 1 / span 4 / span 1 / span 4; /* Spanning across 4 columns */
+  justify-self: end;  /* Aligning it to the right */
+  margin-right: 4%; /* Adding some space on the right side */
+}
+
+.paragraph-row-part1 {
+  grid-area: span 1 / span 3 / span 1 / span 3; /* Spanning 3 columns */
+  margin-top: 4px;  /* Adding margin at the top */
+}
+
+.samurai-people-photo {
+  grid-area: span 2 / span 4 / span 2 / span 4; /* Spanning 2 rows and 4 columns */
+  max-width: 470px;  /* Limiting the max width of the image */
+
+}
+
+.samurai-japanese-letter-history-section, .layout-flexspace-1 {
+  grid-area: span 2 / span 2 / span 2 / span 2; /* Spanning 2 rows and 2 columns */
+}
+
+.samurai-japanese-letter-history-section {
+  max-width: 100%;
+  padding-top: 15%;
+}
+
+.japanese-vertical-writing-history  {
+  grid-area: span 1 / span 1 / span 1 / span 1; /* Single cell */
+  justify-self: start; /* Aligning to the left */
+}
+
+.paragraph-row-part2 {
+  grid-area: span 1 / span 3 / span 1 / span 3; /* Spanning 3 columns */
+  margin: 4px 6% 0 0;
+
+}
+
+.samurai-drawing-history {
+  grid-area: span 1 / span 4 / span 1 / span 4; /* Spanning 1 row and 4 columns */
+  align-self: auto; /* Allowing it to adjust within its cell */
+  max-width: 458px; /* Limiting the image width */
+  margin-top: 9px;
+}
+
+.kendo-man-photo {
+  grid-area: span 3 / span 4 / span 3 / span 4; /* Spanning 3 rows and 4 columns */
+  max-width: 469px; /* Limiting the image width */
+}
+
+.layout-flexspace-2 {
+  grid-area: span 4 / span 1 / span 4 / span 1; /* Spanning 4 rows and 1 column */
+}
+
+.japanese-vertical-writing-seven-virtues {
+  grid-area: span 3 / span 1 / span 3 / span 1; /* Spanning 3 rows and 1 column */
+}
+
+/* Hero image with Japanese text spans 8th row to 9th row and 2nd to 5th column */
+.japanese-letter-hero {
+  grid-area: 8 / 2 / 9 / 5; /* Spanning across specific grid areas */
+  max-width: 349px; /* Limiting width */
+}
+
+.layout-flexspace-3  {
+  grid-area: span 3 / span 2 / span 3 / span 2; /* Spanning 3 rows and 2 columns */
+}
+
+.paragraph-row-part3 {
+  grid-area: span 1 / span 3 / span 1 / span 3; /* Spanning 3 columns */
+}
+
+
+@media only screen and (max-width: 999px) { 
+  .history-layout-container {
+    max-width: 750px;
+  }
+}
+
+@media only screen and (max-width: 978px) { 
+  .samurai-people-photo, .samurai-drawing-history, .kendo-man-photo {
+    max-width: 90%;
+  }
+  .paragraph-row-part1, .paragraph-row-part2, .paragraph-row-part3 {
+    font-size: 0.8rem;
+  }
+  .samurai-japanese-letter-history-section, .japanese-letter-hero {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 770px) { 
+  .history-layout-container {
+    max-width: 650px;
+  }
+}
+
+@media only screen and (max-width: 699px) { 
+  .grid-setting {
+    display: block;
+    text-align: center;
+  }
+  .history-layout-container {
+    max-width: 500px;
+  }
+  .paragraph-japanese {
+    padding: 2%;
+  }
+  .samurai-japanese-letter-history-section, .japanese-letter-hero {
+    max-width: 50%;
+  }
+  .samurai-japanese-letter-history-section {
+    padding-top: 3%;
+  }
+}
+
+@media only screen and (max-width: 553px) { 
+  .history-layout-container {
+    max-width: 400px;
+  }
+}
+
+@media only screen and (max-width: 459px) { 
+  .history-layout-container {
+    max-width: 340px;
+  }
+}
+
+/*-----------Setting for carousel on section 3, code is based on the resources from Session 10 (Week 12)'s Product Carousel and changed some part for my design Link: https://codepen.io/alphardex/pen/dyPQyKY ----*/
+
+.carousel {
+  position: relative; /* make sure positioning within the parent container */
+  display: flex; /* Using Flexbox to arrange carousel items */
+}
+
+.carousel .slides {
+  position: relative;
+  left: 4%; /* Shifting the slides to the right */
+  bottom: 0.1em;  /* Slight adjustment in the vertical position */
+}
+
+.carousel .slides img {
+  position: fixed;
+  opacity: 0; /* Make the slides invisible by default */
+  z-index: 9999;
+}
+
+.carousel .slides img.active {
+  opacity: 1; /* Making the active slide visible */
+}
+
+/* Overlay bar settings */
+.carousel .overlays {
+  position: relative;
+  width: 55%;
+  height: 30em;
+}
+
+/* Overlay bar design */
+.carousel .overlays .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  transform-origin: left; /* Transform from the left side */
+}
+
+/* Navigation links layout */
+.carousel .nav-links {
+  display: flex;
+  flex-direction: column; /* Stack the nav links vertically */
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0;
+  padding: 0 0 0 6em;
+  list-style-type: none; /* Removing list bullets */
+}
+
+/* Styling for nav links */
+.carousel .nav-links .nav-link {
+  font-size: 1.4rem;
+  line-height: 2;
+  text-decoration: none; /* Removing underline */
+  color: #d5d5d5;
+  transition: 0.3s; /* Smooth transition on hover */
+}
+
+/* Hover effect on nav links */
+.carousel .nav-links .nav-link:hover {
+  color: #d28484;
+  font-size: 1.5rem;
+}
+
+/* Active link styling */
+.carousel .nav-links .nav-link.active {
+  color: #D72323; /* Active link color */
+  font-size: 2.5rem; /* Larger size for active link */
+  pointer-events: none; /* Prevent clicking on active link */
+}
+
+@media only screen and (max-width: 1540px) { 
+  .carousel .slides {
+    left: 3%; /* Shifting the slides to the right */
+  }
+  .carousel .slides img {
+    max-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1475px) { 
+  .carousel .slides {
+    left: 2%; /* Shifting the slides to the right */
+  }
+  .carousel .slides img {
+    max-width: 75%;
+  }
+  .carousel .overlays {
+    height: 28em;
+  }
+}
+
+@media only screen and (max-width: 1400px) { 
+  .carousel .slides {
+    left: 1%; /* Shifting the slides to the right */
+  }
+  .carousel .slides img {
+    max-width: 48%;
+  }
+}
+
+@media only screen and (max-width: 1267px) { 
+  .carousel .slides img {
+    max-width: 45%;
+  }
+  .carousel .overlays {
+    height: 25em;
+  }
+}
+
+@media only screen and (max-width: 1267px) { 
+  .carousel .overlays {
+    height: 23em;
+  }
+}
+
+@media only screen and (max-width: 1018px) { 
+  .carousel .overlays {
+    height: 21em;
+  }
+  /* Styling for nav links */
+  .carousel .nav-links .nav-link {
+    font-size: 1rem;
+  }
+  /* Hover effect on nav links */
+  .carousel .nav-links .nav-link:hover {
+    font-size: 1.1rem;
+  }
+  /* Active link styling */
+  .carousel .nav-links .nav-link.active {
+    color: #D72323; /* Active link color */
+    font-size: 2.1rem; /* Larger size for active link */
+  }
+}
+
+@media only screen and (max-width: 866px) { 
+  .carousel {
+    display: block;
+    margin-left: 15%;
+    max-width: 90%;
+  }
+  .carousel .overlays {
+    height: 14em;
+  }
+  .carousel .slides {
+    left: 5%; /* Shifting the slides to the right */
+  }
+}
+
+@media only screen and (max-width: 819px) { 
+  .carousel .overlays {
+    height: 12em;
+  }
+  /* Styling for nav links */
+  .carousel .nav-links .nav-link {
+    font-size: 0.8rem;
+  }
+  /* Hover effect on nav links */
+  .carousel .nav-links .nav-link:hover {
+    font-size: 0.9rem;
+  }
+  /* Active link styling */
+  .carousel .nav-links .nav-link.active {
+    color: #D72323; /* Active link color */
+    font-size: 1.7rem; /* Larger size for active link */
+  }
+}
+
+@media only screen and (max-width: 730px) { 
+  .carousel .overlays {
+    height: 10em;
+  }
+  /* Active link styling */
+  .carousel .nav-links .nav-link.active {
+    color: #D72323; /* Active link color */
+    font-size: 1.5rem; /* Larger size for active link */
+  }
+  .carousel .slides {
+    left: 1.5%; /* Shifting the slides to the right */
+  }
+}
+
+@media only screen and (max-width: 730px) { 
+  .carousel .overlays {
+    height: 12em;
+  }
+  .carousel .slides img {
+    max-width: 60%;
+  }
+  .carousel .overlays {
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 526px) { 
+  .carousel .overlays {
+    height: 10em;
+  }
+  .carousel .slides img {
+    max-width: 62%;
+  }
+  .carousel .nav-links {
+    padding: 0;
+  }
+}
+
+/* -----------------------Setting for section 4: dialog pup up ---------------------------- */
+
+.heading1-section4 {
+  margin-bottom: 0;
+}
+
+.circle-body {
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Horizontally center content inside the circle */
+  align-items: center; /* Vertically center content inside the circle */
+  height: 77vh;  /* Set height to 77% of the viewport height */
+  margin: 0;  /* Remove default margin */
+  background-color: transparent; /* Set transparent background for the circle, so can see the bg video */
+}
+
+/* Container for the circle itself*/ 
+.circle-container {
+  position: relative;
+  width: 75%;
+  height: 75%;
+}
+
+.overlay-video-section4 {
+  opacity: 40%; /* Make the overlay video semi-transparent */
+}
+
+/* General styling for dialog boxes (1 to 8) in Section 4 */
+.dialog-overview-1, .dialog-overview-2,
+.dialog-overview-3, .dialog-overview-4,
+.dialog-overview-5, .dialog-overview-6,
+.dialog-overview-7, .dialog-overview-8 {
+  --width: 50vw; /* Set custom width of each dialog to 50% of the viewport width */
+}
+
+/* Styling for images inside each dialog (1 to 8)*/
+.dialog-overview-1 img, .dialog-overview-2 img,
+.dialog-overview-3 img, .dialog-overview-4 img,
+.dialog-overview-5 img, .dialog-overview-6 img,
+.dialog-overview-7 img, .dialog-overview-8 img
+ {
+  width: 80%; /* Set image width to 80% of its container */
+  margin-left: 9%; /* Add left margin to center the image horizontally */
+}
+
+@media only screen and (max-width: 1209px) { 
+  .dialog-overview-1 img, .dialog-overview-2 img,
+  .dialog-overview-3 img, .dialog-overview-4 img,
+  .dialog-overview-5 img, .dialog-overview-6 img,
+  .dialog-overview-7 img, .dialog-overview-8 img
+  {
+    width: 90%; /* Set image width to 80% of its container */
+    margin-left: 5%; /* Add left margin to center the image horizontally */
+  }
+}
+
+@media only screen and (max-width: 861px) { 
+  .dialog-overview-1 img, .dialog-overview-2 img,
+  .dialog-overview-3 img, .dialog-overview-4 img,
+  .dialog-overview-5 img, .dialog-overview-6 img,
+  .dialog-overview-7 img, .dialog-overview-8 img
+  {
+    width: 95%; /* Set image width to 80% of its container */
+    margin-left: 2.5%; /* Add left margin to center the image horizontally */
+  }
+}
+
+@media only screen and (max-width: 712px) { 
+  .dialog-overview-1 img, .dialog-overview-2 img,
+  .dialog-overview-3 img, .dialog-overview-4 img,
+  .dialog-overview-5 img, .dialog-overview-6 img,
+  .dialog-overview-7 img, .dialog-overview-8 img
+  {
+    width: 98%; /* Set image width to 80% of its container */
+    margin-left: 1%; /* Add left margin to center the image horizontally */
+  }
+}
+
+@media only screen and (max-width: 607px) { 
+  .dialog-overview-1 img, .dialog-overview-2 img,
+  .dialog-overview-3 img, .dialog-overview-4 img,
+  .dialog-overview-5 img, .dialog-overview-6 img,
+  .dialog-overview-7 img, .dialog-overview-8 img
+  {
+    width: 100%; /* Set image width to 80% of its container */
+    margin-left: 0; /* Add left margin to center the image horizontally */
+  }
+}
+
+
+
+
+
+
+
+
+
